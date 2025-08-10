@@ -5,62 +5,18 @@ import com.heypixel.heypixelmod.obsoverlay.events.api.EventTarget;
 import com.heypixel.heypixelmod.obsoverlay.events.impl.EventKey;
 import com.heypixel.heypixelmod.obsoverlay.events.impl.EventMouseClick;
 import com.heypixel.heypixelmod.obsoverlay.exceptions.NoSuchModuleException;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.AimAssist;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.AntiBots;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.AttackCrystal;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.Aura;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.AutoClicker;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.Velocity;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.AntiFireball;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.AutoTools;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.ChestStealer;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.ClientFriend;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.Disabler;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.FastPlace;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.Helper;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.InventoryCleaner;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.ItemTracker;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.KillSay;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.Spammer;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.Teams;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.AutoMLG;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.Blink;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.FastWeb;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.LongJump;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.NoJumpDelay;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.NoSlow;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.SafeWalk;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.Scaffold;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.Sprint;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.Stuck;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.AntiBlindness;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.AntiNausea;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.ChestESP;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.ClickGUIModule;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.Compass;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.EffectDisplay;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.FullBright;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.Glow;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.HUD;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.ItemTags;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.MotionBlur;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.NameProtect;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.NameTags;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.NoHurtCam;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.NoRender;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.PostProcess;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.Projectile;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.Scoreboard;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.ScoreboardSpoof;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.TimeChanger;
-import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.ViewClip;
+import com.heypixel.heypixelmod.obsoverlay.modules.impl.combat.*;
+import com.heypixel.heypixelmod.obsoverlay.modules.impl.misc.*;
+import com.heypixel.heypixelmod.obsoverlay.modules.impl.move.*;
+import com.heypixel.heypixelmod.obsoverlay.modules.impl.render.*;
+import net.minecraft.client.Minecraft;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.minecraft.client.Minecraft;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class ModuleManager {
    private static final Logger log = LogManager.getLogger(ModuleManager.class);
@@ -73,7 +29,7 @@ public class ModuleManager {
          this.initModules();
          this.modules.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
       } catch (Exception var2) {
-         log.error("Failed to initialize modules", var2);
+         log.error("something have problemXD", var2);
          throw new RuntimeException(var2);
       }
 
@@ -85,6 +41,7 @@ public class ModuleManager {
          new Aura(),
          new HUD(),
          new Velocity(),
+         new NewGrimVelocity(),
          new NameTags(),
          new ChestStealer(),
          new InventoryCleaner(),
