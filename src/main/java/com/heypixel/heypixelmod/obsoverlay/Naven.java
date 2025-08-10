@@ -82,7 +82,7 @@ public class Naven {
       try {
          new Naven();
       } catch (Exception var1) {
-         System.err.println("Failed to load client");
+         System.err.println("加载失败了呢主人❤~");
          var1.printStackTrace(System.err);
       }
    }

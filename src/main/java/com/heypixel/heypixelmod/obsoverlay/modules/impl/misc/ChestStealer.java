@@ -44,7 +44,7 @@ public class ChestStealer extends Module {
    private final FloatValue delay = ValueBuilder.create(this, "Delay (Ticks)")
       .setDefaultFloatValue(3.0F)
       .setFloatStep(1.0F)
-      .setMinFloatValue(3.0F)
+      .setMinFloatValue(0.0F)
       .setMaxFloatValue(10.0F)
       .build()
       .getFloatValue();

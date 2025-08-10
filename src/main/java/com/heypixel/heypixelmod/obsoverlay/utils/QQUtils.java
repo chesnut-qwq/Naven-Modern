@@ -1,3 +1,4 @@
+/*
 package com.heypixel.heypixelmod.obsoverlay.utils;
 
 import java.io.BufferedReader;
@@ -73,3 +74,4 @@ public class QQUtils {
       }
    }
 }
+ */

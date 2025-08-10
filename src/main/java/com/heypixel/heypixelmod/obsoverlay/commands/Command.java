@@ -13,7 +13,6 @@ public abstract class Command {
          this.aliases = commandInfo.aliases();
       }
    }
-
    public abstract void onCommand(String[] var1);
 
    public abstract String[] onTab(String[] var1);

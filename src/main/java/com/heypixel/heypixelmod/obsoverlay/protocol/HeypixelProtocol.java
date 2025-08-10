@@ -35,7 +35,7 @@ public class HeypixelProtocol {
       } catch (Exception var4) {
          var4.printStackTrace();
          logger.error("Error on joining server");
-         ChatUtils.addChatMessage("处理协议时发生致命错误");
+         ChatUtils.addChatMessage("协议怎么他妈的出问题了啊草你妈");
       }
    }
 
